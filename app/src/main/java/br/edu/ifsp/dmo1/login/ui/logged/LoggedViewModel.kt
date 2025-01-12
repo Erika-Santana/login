@@ -13,7 +13,8 @@ class LoggedViewModel(application: Application) : AndroidViewModel(application){
 
     var repository =  DataStoreRepository(application)
 
-    fun logoutFalse(){
+    //Função corrotina para a chamada do método suspend savePreferences com um único argumento
+    fun logout(){
         viewModelScope.launch {
             repository.savePreferences(false)
         }

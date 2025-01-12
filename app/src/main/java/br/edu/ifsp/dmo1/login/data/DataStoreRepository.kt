@@ -38,6 +38,9 @@ class DataStoreRepository(context : Context) {
             }
         }
 
+    /*Sobrecarga da função savePreferences para modificar o atributo STAY_LOGGED_IN e dessa forma não permitir a opção de ''Manter Logado''
+    * do aplicativo. Achei melhor criar uma outra função que apenas exigisse um atributo para não ter que pegar o email e a senha do usuário. */
+
             suspend fun savePreferences(stayLoggedIn: Boolean) {
                 dataStore.edit { preferences ->
                     preferences[PreferencesKeys.STAY_LOGGED_IN] = stayLoggedIn

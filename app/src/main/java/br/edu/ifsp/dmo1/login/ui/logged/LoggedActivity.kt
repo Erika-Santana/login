@@ -21,12 +21,14 @@ class LoggedActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this).get(LoggedViewModel::class.java)
         binding.textMessage.setText("Bem-Vindo")
 
-        setListeners()
+        setListener()
     }
 
-    private fun setListeners(){
+    /* Ao clicar no botão Logout, ele chama o método logout do ViewModel que consequentemente em uma corrotina, chama de uma
+    * instancia do repositório,  o método SavePreferences passando um argumento como false */
+    private fun setListener(){
         binding.botaoLogout.setOnClickListener{
-            viewModel.logoutFalse()
+            viewModel.logout()
             val intentM = Intent(this, MainActivity::class.java)
             startActivity(intentM)
             finish()
